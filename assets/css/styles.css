@@ -65,6 +65,16 @@ a:hover {
     color: #ff00ff;
     box-shadow: 0 0 20px #00ffff, 0 0 40px #ff00ff;
 }
+.robotics {
+    background-color: #000000;
+    text-shadow: 0px 0px 2px rgb(45, 255, 237);
+    padding: 20px;
+    line-height: 1.2;
+    text-align: left;
+    border-radius: 8px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
 .calendar-container {
     position: relative;
@@ -116,4 +126,36 @@ a:hover {
 
 .tech-events a:hover {
     text-decoration: underline;
+}
+.lab-details {
+    background-color: #000000;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.lab-details h2 {
+    margin-bottom: 15px;
+}
+
+.lab-details ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 5px;
+    line-height: 1.2;
+    text-align: left;
+}
+
+.lab-details ul li {
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.lab-details p {
+    font-size: 16px;
+    text-align: center;
+    line-height: 1.5;
+    text-shadow: 0px 0px 2px rgb(45, 255, 237);
+    color: rgb(92, 255, 92); 
 }
