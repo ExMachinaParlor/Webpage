@@ -1,73 +1,11 @@
-/*
-	Directive by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
-$(document).ready(function() {
-    $('.terminal2').terminal2(App, {
-        greetings: 'Welcome to ExMachinaParlor Terminal!',
-        prompt: 'root@exmachinaparlor:~# ',
-        onBlur: function() {
-            return false; // prevent losing focus
-        }
-    });
-});
-
-document.getElementById("secretButton").addEventListener("click", function() {
-    // Prompt for a password
-    const password = prompt("Please enter the secret password:");
-    
-    // Define the correct password (you can change this)
-    const correctPassword = "cyberpunk2024"; 
-
-    // Check if the password matches
-    if (password === correctPassword) {
-        alert("Access granted! Redirecting to the terminal page.");
-        // Redirect to terminal.html
-        window.location.href = "terminal.html";
-    } else {
-        alert("Access denied. Incorrect password.");
-    }
-});
-
-
-$window.on('load', () => {
-    window.setTimeout(() => {
-        $body.removeClass('is-preload');
-    }, 100);
-});
-
-
 // JavaScript for password protection on the secret button
 document.getElementById("secretButton").addEventListener("click", function() {
-    // Prompt for a password
     const password = prompt("Please enter the secret password:");
-    
-    // Define the correct password (you can change this)
-    const correctPassword = "cyberpunk2024"; 
+    const correctPassword = "!Ey3_Th1nK!Th3r3_f0r3!Ey3_AM#"; // Updated password
 
-    // Check if the password matches
     if (password === correctPassword) {
         alert("Access granted! Redirecting to the terminal page.");
-        // Redirect to terminal.html
-        window.location.href = "terminal.html";
-    } else {
-        alert("Access denied. Incorrect password.");
-    }
-});
-
-document.getElementById("secretButton").addEventListener("click", function() {
-    // Prompt for a password
-    const password = prompt("Please enter the secret password:");
-    
-    // Define the correct password
-    const correctPassword = "cyberpunk2024"; 
-
-    // Check if the password matches
-    if (password === correctPassword) {
-        alert("Access granted! Redirecting to the terminal page.");
-        // Redirect to terminal.html
-        window.location.href = "terminal.html";
+        window.location.href = "terminal.html"; // Redirect to terminal page
     } else {
         alert("Access denied. Incorrect password.");
     }
@@ -80,7 +18,7 @@ const App = {
         this.echo(text);
     },
     help: function() {
-        showHelp(this);
+        this.echo("Available commands: [[b;#66ffff;]blog, ls, whoami]");
     },
     ls: function() {
         this.echo('[[b;#66ffff;]autoexec.cfg]');
@@ -105,6 +43,7 @@ function showHelp(consoleObj) {
     consoleObj.echo("\t[[b;#66ffff;]whoami]  #Who am I?");
 }
 
+// Initialize terminal emulator on page load
 $(document).ready(function() {
     const isMobile = window.matchMedia("only screen and (max-width: 480px)").matches;
     const isTablet = window.matchMedia("only screen and (max-width: 768px)").matches;
@@ -138,35 +77,15 @@ $(document).ready(function() {
 
         setTimeout(() => {
             $('.exmachina-terminal').find('.cursor').focus();
-        }, 100); 
+        }, 100);
     }
 
     startTerminal();
 });
 
-
-
-
-(function($) {
-
-	var	$window = $(window),
-		$body = $('body');
-
-	// Breakpoints.
-		breakpoints({
-			wide:      [ '1281px',  '1680px' ],
-			normal:    [ '981px',   '1280px' ],
-			narrow:    [ '841px',   '980px'  ],
-			narrower:  [ '737px',   '840px'  ],
-			mobile:    [ '481px',   '736px'  ],
-			mobilep:   [ null,      '480px'  ]
-		});
-
-	// Play initial animations on page load.
-		$window.on('load', function() {
-			window.setTimeout(function() {
-				$body.removeClass('is-preload');
-			}, 100);
-		});
-
-})(jQuery);
+// On load remove 'is-preload' class after short delay
+$(window).on('load', function() {
+    setTimeout(function() {
+        $('body').removeClass('is-preload');
+    }, 100);
+});
