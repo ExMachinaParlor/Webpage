@@ -1,101 +1,213 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-  <meta charset="utf-8" />
-  <title>ExMachinaParlor:~#</title>
-  <meta name="description" content="ExMachinaParlor Terminal" />
-  <link rel="shortcut icon" href="favicon.ico" />
-  <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,600' rel='stylesheet' type='text/css'>
-  <link href="https://unpkg.com/jquery.terminal/css/jquery.terminal.min.css" rel="stylesheet" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="https://unpkg.com/jquery.terminal/js/jquery.terminal.min.js"></script>
-  <script src="js/main.js"></script>
-  <style>
-    /* Default styles for desktop */
-    body {
-      font-family: 'Source Code Pro', monospace;
-      background-color: #000;
-      color: #0f0;
-      font-size: 16px;
-    }
-
-    /* Styles for tablets */
-    @media (max-width: 768px) {
+  <head>
+    <meta charset="utf-8" />
+    <title>ExMachinaParlor:~#</title>
+    <meta name="description" content="ExMachinaParlor Terminal" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link
+      href="http://fonts.googleapis.com/css?family=Source+Code+Pro:400,600"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://unpkg.com/jquery.terminal/css/jquery.terminal.min.css"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://unpkg.com/jquery.terminal/js/jquery.terminal.min.js"></script>
+    <script src="js/main.js"></script>
+    <style>
+      /* Default styles for desktop */
       body {
-        font-size: 14px;
+        font-family: "Source Code Pro", monospace;
+        background-color: #000;
+        color: #0f0;
+        font-size: 16px;
       }
 
-      .exmachina-terminal {
-        width: 90%;
-        height: 400px;
-        margin: auto;
+      /* Styles for tablets */
+      @media (max-width: 768px) {
+        body {
+          font-size: 14px;
+        }
+
+        .exmachina-terminal {
+          width: 90%;
+          height: 400px;
+          margin: auto;
+        }
       }
-    }
 
-    /* Styles for mobile phones */
-    @media (max-width: 480px) {
-      body {
-        font-size: 12px;
+      /* Styles for mobile phones */
+      @media (max-width: 480px) {
+        body {
+          font-size: 12px;
+        }
+
+        .exmachina-terminal {
+          width: 100%;
+          height: 300px;
+          margin: auto;
+        }
       }
 
-      .exmachina-terminal {
-        width: 100%;
-        height: 300px;
-        margin: auto;
-      }
-    }
-
-    /* ASCII Art Centering */
-    .ascii-art {
-      text-align: center;
-      white-space: pre-wrap;
-      font-size: 1.5em;
-      line-height: 1.2em;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    /* Responsive scaling for ASCII art */
-    @media (max-width: 768px) {
+      /* ASCII Art Centering */
       .ascii-art {
-        font-size: 1.2em;
+        text-align: center;
+        white-space: pre-wrap;
+        font-size: 1.5em;
+        line-height: 1.2em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
       }
-    }
 
-    @media (max-width: 480px) {
-      .ascii-art {
-        font-size: 1em;
+      /* Responsive scaling for ASCII art */
+      @media (max-width: 768px) {
+        .ascii-art {
+          font-size: 1.2em;
+        }
       }
-    }
-  </style>
-</head>
 
-<body>
-  <div class="exmachina-terminal"></div> <!-- Updated terminal div -->
-  <script>
-    $(document).ready(function () {
-        // Initialize the terminal
-        $('.exmachina-terminal').terminal({
-            help: function() {
-                this.echo("Available commands: [[b;#66ffff;]nextchallenge]");
-            },
-            nextchallenge: function() {
-                this.echo("Access the next challenge here: [[!;;;;https://cryptpad.fr/form/#/2/form/view/R0ACr87y-CBFD4eFrpy6492EJaNHi31q5KfSAH9zKU0/]]https://cryptpad.fr/form/#/2/form/view/R0ACr87y-CBFD4eFrpy6492EJaNHi31q5KfSAH9zKU0/");
-            },
-            // Add more commands as needed
-        }, {
-            greetings: '[[b;#00ff00;]ExMachinaParlor Terminal. Type "help" for available commands.]',
-            prompt: 'ExMachinaParlor:~# ',
-            name: 'exmachina_terminal',
-            height: '400px',
-            width: '90%'
-        });
-    });
-  </script>
-</body>
+      @media (max-width: 480px) {
+        .ascii-art {
+          font-size: 1em;
+        }
+      }
+    </style>
+  </head>
 
+  <body>
+    <div class="exmachina-terminal"></div>
+    <!-- Updated terminal div -->
+    <script>
+      $(document).ready(function () {
+        $(".exmachina-terminal").terminal(
+          {
+            help: function () {
+              this.echo(
+                "Available commands:\n[[b;#66ffff;]help, nextchallenge, whoami, ls, cd, cat, clear, echo, date, uptime, ascii, banner, ssh, exit, secret, pwd, mkdir, rm, touch]"
+              );
+            },
+            whoami: function () {
+              this.echo("exmachina_user");
+            },
+            ls: function () {
+              this.echo("documents/  downloads/  projects/  readme.txt");
+            },
+            cd: function (dir) {
+              if (!dir) {
+                this.echo("Usage: cd [directory]");
+              } else if (["documents", "downloads", "projects"].includes(dir)) {
+                this.echo(`Changed directory to ${dir}/`);
+              } else {
+                this.echo(`bash: cd: ${dir}: No such file or directory`);
+              }
+            },
+            cat: function (file) {
+              const files = {
+                "readme.txt": "Welcome to the ExMachinaParlor Terminal!\nType 'help' to see available commands.",
+                "projects": "Current projects:\n1. Cyber Defense Bot\n2. Drone Interceptor\n3. IoT Security Scanner",
+              };
+              if (files[file]) {
+                this.echo(files[file]);
+              } else {
+                this.echo(`cat: ${file}: No such file or directory`);
+              }
+            },
+            clear: function () {
+              this.clear();
+            },
+            echo: function (text) {
+              this.echo(text || "Usage: echo [text]");
+            },
+            date: function () {
+              this.echo(new Date().toString());
+            },
+            uptime: function () {
+              const hours = Math.floor(Math.random() * 24);
+              const minutes = Math.floor(Math.random() * 60);
+              const seconds = Math.floor(Math.random() * 60);
+              this.echo(`Uptime: ${hours}h ${minutes}m ${seconds}s`);
+            },
+            ascii: function () {
+              this.echo(`
+    [[b;#00ff00;]
+    ███████╗██╗  ██╗    ███╗   ███╗ █████╗  ██████╗██╗  ██╗██╗███╗   ██╗ █████╗     ██████╗  █████╗ ██████╗ ██╗      ██████╗ ██████╗ 
+    ██╔════╝╚██╗██╔╝    ████╗ ████║██╔══██╗██╔════╝██║  ██║██║████╗  ██║██╔══██╗    ██╔══██╗██╔══██╗██╔══██╗██║     ██╔═══██╗██╔══██╗
+    █████╗   ╚███╔╝     ██╔████╔██║███████║██║     ███████║██║██╔██╗ ██║███████║    ██████╔╝███████║██████╔╝██║     ██║   ██║██████╔╝
+    ██╔══╝   ██╔██╗     ██║╚██╔╝██║██╔══██║██║     ██╔══██║██║██║╚██╗██║██╔══██║    ██╔═══╝ ██╔══██║██╔══██╗██║     ██║   ██║██╔══██╗
+    ███████╗██╔╝ ██╗    ██║ ╚═╝ ██║██║  ██║╚██████╗██║  ██║██║██║ ╚████║██║  ██║    ██║     ██║  ██║██║  ██║███████╗╚██████╔╝██║  ██║
+    ╚══════╝╚═╝  ╚═╝    ╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝    ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝
+    ]]
+              `);
+            },
+            banner: function () {
+              this.echo(
+                "Welcome to ExMachinaParlor Terminal\nAre you ready to fall off the edge CyberPunk?"
+              );
+            },
+            ssh: function (host) {
+              if (host) {
+                this.echo(
+                  `Connecting to ${host}...\nConnection established.\nType "exit" to disconnect.`
+                );
+              } else {
+                this.echo("Usage: ssh [hostname]");
+              }
+            },
+            exit: function () {
+              this.echo("Exiting session...");
+              this.logout();
+            },
+            secret: function () {
+              this.echo("Access Granted.\nWelcome to the inner sanctum...");
+            },
+            pwd: function () {
+              this.echo("/home/exmachina_user");
+            },
+            mkdir: function (dir) {
+              if (!dir) {
+                this.echo("Usage: mkdir [directory]");
+              } else {
+                this.echo(`Directory '${dir}' created.`);
+              }
+            },
+            rm: function (file) {
+              if (!file) {
+                this.echo("Usage: rm [file]");
+              } else {
+                this.echo(`File '${file}' removed.`);
+              }
+            },
+            touch: function (file) {
+              if (!file) {
+                this.echo("Usage: touch [file]");
+              } else {
+                this.echo(`File '${file}' created.`);
+              }
+            },
+          },
+          {
+            greetings:
+              '[[b;#00ff00;]ExMachinaParlor Terminal. Type "help" for available commands.]',
+            prompt: "ExMachinaParlor:~# ",
+            name: "exmachina_terminal",
+            height: "400px",
+            width: "90%",
+            onCommandNotFound: function (command) {
+              this.echo(
+                `[[;red;]Error: Command "${command}" not found. Type "help" for a list of commands.]`
+              );
+            },
+          }
+        );
+      });
+    </script>
+    
+    </script>
+  </body>
 </html>
