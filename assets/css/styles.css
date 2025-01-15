@@ -46,6 +46,9 @@ a:hover {
     box-shadow: 0 0 10px #00ffff;
     font-family: 'Lucida Console', 'Courier New', Courier, monospace;
     margin-top: 20px;
+    max-width: 100%; /* Ensure terminal stays within parent container */
+    overflow: hidden; /* Prevent content from overflowing */
+    box-sizing: border-box; /* Include padding in the terminal's width */
 }
 
 /* Buttons */
@@ -182,13 +185,15 @@ a:hover {
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.4);
 }
 
-/* Social Media Buttons */
+/* Constrain Social Media Buttons Inside Terminal */
 .social-buttons {
     display: flex;
-    justify-content: center; /* Align buttons horizontally */
-    flex-wrap: wrap; /* Allow wrapping to the next line */
-    gap: 15px; /* Spacing between buttons */
-    margin-top: 10px;
+    justify-content: center; /* Center buttons horizontally */
+    flex-wrap: wrap; /* Allow wrapping for small screens */
+    gap: 15px; /* Space between buttons */
+    margin: 0 auto; /* Center the entire group */
+    max-width: 100%; /* Prevent buttons from exceeding the terminal width */
+    box-sizing: border-box; /* Include padding in calculations */
 }
 
 .social-button {
@@ -247,21 +252,20 @@ a:hover {
     background-color: #357abf;
 }
 
-/* Responsive Adjustments for Mobile */
-@media (max-width: 768px) {
+/* Responsive Social Media Adjustments */
+@media (max-width: 400px) {
     .social-buttons {
-        flex-direction: column; /* Stack buttons vertically */
-        gap: 10px; /* Reduce gap between buttons */
+        flex-direction: column; /* Stack buttons vertically on super-thin displays */
+        gap: 10px; /* Adjust spacing */
+        align-items: center; /* Center-align buttons within the terminal */
     }
-    
+
     .social-button {
-        justify-content: center; /* Center-align content inside buttons */
-        padding: 12px 20px; /* Adjust padding for smaller screens */
-        font-size: 14px; /* Slightly smaller text */
-    }
-    
-    .social-button img {
-        width: 20px; /* Scale down icon size */
-        height: 20px;
+        width: 100%; /* Allow buttons to span the terminal width */
+        max-width: 300px; /* Optional: Limit button width for better appearance */
+        justify-content: center; /* Center-align button content */
+        padding: 8px 12px; /* Adjust padding */
+        font-size: 12px; /* Reduce text size for small screens */
     }
 }
+
