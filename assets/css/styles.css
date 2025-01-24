@@ -49,6 +49,8 @@ a:hover {
     max-width: 100%; /* Ensure terminal stays within parent container */
     overflow: hidden; /* Prevent content from overflowing */
     box-sizing: border-box; /* Include padding in the terminal's width */
+    
+    
 }
 
 /* Buttons */
@@ -129,6 +131,24 @@ a:hover {
 
 .tech-events a:hover {
     text-decoration: underline;
+}
+
+/* Ensure iframe fits within mobile borders */
+.tech-events iframe {
+    width: 100%;
+    max-width: 100%; /* Prevent it from exceeding container width */
+    height: auto; /* Maintain aspect ratio */
+    border: none; /* Optional: remove iframe border */
+}
+
+/* Add padding for smaller screens */
+@media (max-width: 768px) {
+    .tech-events {
+        padding: 15px;
+    }
+    .tech-events iframe {
+        padding: 0;
+    }
 }
 
 /* Lab Details Section */
@@ -252,20 +272,29 @@ a:hover {
     background-color: #357abf;
 }
 
-/* Responsive Social Media Adjustments */
+/* Adjustments for Super-Thin Displays (less than 400px) */
 @media (max-width: 400px) {
     .social-buttons {
-        flex-direction: column; /* Stack buttons vertically on super-thin displays */
-        gap: 10px; /* Adjust spacing */
-        align-items: center; /* Center-align buttons within the terminal */
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center; /* Center the buttons in the container */
+        gap: 8px; /* Reduce gap for smaller screens */
     }
 
     .social-button {
-        width: 100%; /* Allow buttons to span the terminal width */
-        max-width: 300px; /* Optional: Limit button width for better appearance */
-        justify-content: center; /* Center-align button content */
-        padding: 8px 12px; /* Adjust padding */
-        font-size: 12px; /* Reduce text size for small screens */
+        width: 100%; /* Make buttons take full width */
+        max-width: 300px; /* Optional: Limit the button width for better design */
+        justify-content: center; /* Center text and icon */
+        padding: 8px 12px; /* Adjust padding for compact design */
+        font-size: 12px; /* Smaller text for smaller displays */
+    }
+
+    .social-button img {
+        width: 18px; /* Reduce icon size */
+        height: 18px;
+    }
+
+    .social-buttons {
+        margin-top: 15px; /* Adjust spacing above buttons */
     }
 }
 
