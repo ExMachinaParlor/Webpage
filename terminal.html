@@ -110,7 +110,7 @@
             cat: function (file) {
               const files = {
                 "readme.txt": "Welcome to the ExMachinaParlor Terminal!\nType 'help' to see available commands.",
-                "projects": "Current projects:\n1. Cyber Defense Bot\n2. Drone Interceptor\n3. IoT Security Scanner",
+                "projects": "Current projects:\n1. Tengu Marauder Vanguard\n2. Strix Interceptor\n3. Integrated Robotics Network Framework"
               };
               if (files[file]) {
                 this.echo(files[file]);
@@ -175,6 +175,12 @@
               } else {
                 this.echo(`Directory '${dir}' created.`);
               }
+            },
+            nextchallenge: function () {
+              const url = "https://empcrewdaedalos.onrender.com/"; // your fixed URL
+              this.echo(`Redirecting to '${url}' ...`);
+              window.location.href = url;  // opens in same tab
+              // or: window.open(url, "_blank"); // opens in new tab
             },
             rm: function (file) {
               if (!file) {
